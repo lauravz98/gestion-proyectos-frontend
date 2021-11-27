@@ -3,21 +3,38 @@ import { NavLink } from "react-router-dom";
 
 const SidebarLinks = () => {
     return (
-        <ul className="mt-12">
+      <ul className="mt-12">
         <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
-        <SidebarRoute to="/page2" title="Pagina2" icon="fas fa-smile-wink" />
-        <SidebarRoute to="/category1" title="Catego 1" icon="fab fa-amazon" />
-        <SidebarRoute to="/category1/page1" title="Test" icon="fas fa-car" />
-        </ul>
+        <SidebarRoute
+          to="/gestion-usuarios"
+          title="Gestión de usuarios"
+          icon="fas fa-users"
+        />
+        <SidebarRoute
+          to="/gestion-proyectos"
+          title="Gestión de proyectos"
+          icon="fas fa-project-diagram"
+        />
+        <SidebarRoute
+          to="/gestion-inscripciones"
+          title="Gestión de inscripciones"
+          icon="fas fa-tasks"
+        />
+        <SidebarRoute
+          to="/gestion-avances"
+          title="Gestión de avances"
+          icon="fas fa-spinner"
+        />
+      </ul>
     );
     };
 
     const Logo = () => {
     return (
         <div className="py-3 w-full flex flex-col items-center justify-center">
-        <img src="logo.png" alt="Logo" className="h-16" />
+        <img src="./deadpool-icon.png" alt="Logo X-Force" className="h-16" />
         <span className="my-2 text-xl font-bold text-center">
-            Título de Mi Aplicación
+            Gestión de Proyectos X-Force
         </span>
         </div>
     );
@@ -35,7 +52,7 @@ const SidebarLinks = () => {
             <SidebarLinks />
             </div>
         </div>
-        <div className="flex md:hidden w-full justify-between bg-gray-800 p-2 text-white">
+        <div className="flex md:hidden w-full justify-between bg-gray-100 p-2 text-white">
             <i
             className={`fas fa-${open ? "times" : "bars"}`}
             onClick={() => setOpen(!open)}
@@ -71,8 +88,8 @@ const SidebarLinks = () => {
             to={to}
             className={({ isActive }) =>
             isActive
-                ? "sidebar-route text-white bg-indigo-700"
-                : "sidebar-route text-gray-900 hover:text-white hover:bg-indigo-400"
+                ? "sidebar-route text-white bg-blue"
+                : "sidebar-route text-gray-500 hover:text-white hover:bg-gray-200"
             }
         >
             <div className="flex items-center">
