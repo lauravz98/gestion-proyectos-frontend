@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+//consulta que retorna todo el listado de usuarios
 const GET_USUARIOS = gql`
     query Usuarios{
         Usuarios {
@@ -13,4 +14,17 @@ const GET_USUARIOS = gql`
         }
     }`;
 
-export {GET_USUARIOS}
+    //devuelve un unico usuario
+const GET_USUARIO = gql`
+    query Usuario($id: String!) {
+        Usuario(_id: $id) {
+            _id
+            nombre
+            apellido
+            identificacion
+            correo
+            rol
+            estado
+        }
+    }`;
+export {GET_USUARIOS, GET_USUARIO}

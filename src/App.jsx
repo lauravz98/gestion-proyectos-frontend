@@ -7,7 +7,9 @@ import Index from 'pages/Index';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 import 'styles/globals.css';
+import "styles/tabla.css";
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
+import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import Proyectos from 'pages/Proyectos';
 import Inscripciones from 'pages/Inscripciones';
 import Avances from 'pages/Avances';
@@ -33,22 +35,20 @@ function App() {
         redirectUri="http://localhost:3000/admin"
         audience="api-autenticacion-concesionario-mintic"
       > */}
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<PrivateLayout />}>
-                <Route path="" element={<Index />} />
-                <Route path="gestion-usuarios" element={<IndexUsuarios />} />
-                <Route path="gestion-proyectos" element={<Proyectos />} />
-                <Route
-                  path="gestion-inscripciones"
-                  element={<Inscripciones />}
-                />
-                <Route path="gestion-avances" element={<Avances />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </UserContext.Provider>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<PrivateLayout />}>
+              <Route path="" element={<Index />} />
+              <Route path="gestion-usuarios" element={<IndexUsuarios />} />
+              <Route path="gestion-usuarios/editar/:_id" element={<EditarUsuario />} />
+              <Route path="gestion-proyectos" element={<Proyectos />} />
+              <Route path="gestion-inscripciones" element={<Inscripciones />} />
+              <Route path="gestion-avances" element={<Avances />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
       {/* </Auth0Provider> */}
     </ApolloProvider>
   );
