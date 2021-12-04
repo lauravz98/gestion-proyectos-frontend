@@ -3,29 +3,13 @@ import { NavLink } from "react-router-dom";
 
 const SidebarLinks = () => {
     return (
-      <ul className="mt-12">
-        <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
-        <SidebarRoute
-          to="/gestion-usuarios"
-          title="Gestión de usuarios"
-          icon="fas fa-users"
-        />
-        <SidebarRoute
-          to="/gestion-proyectos"
-          title="Gestión de proyectos"
-          icon="fas fa-project-diagram"
-        />
-        <SidebarRoute
-          to="/gestion-inscripciones"
-          title="Gestión de inscripciones"
-          icon="fas fa-tasks"
-        />
-        <SidebarRoute
-          to="/gestion-avances"
-          title="Gestión de avances"
-          icon="fas fa-spinner"
-        />
-      </ul>
+        <ul className="mt-12">
+            <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
+            <SidebarRoute to="/gestion-usuarios" title="Gestión de usuarios" icon="fas fa-users" />
+            <SidebarRoute to="/gestion-proyectos" title="Gestión de proyectos" icon="fas fa-project-diagram" />
+            <SidebarRoute to="/gestion-inscripciones" title="Gestión de inscripciones" icon="fas fa-tasks" />
+            <SidebarRoute to="/gestion-avances" title="Gestión de avances" icon="fas fa-spinner"  />
+        </ul>
     );
     };
 
