@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "./deadpool-icon.png";
 
 const SidebarLinks = () => {
     return (
@@ -16,7 +17,7 @@ const SidebarLinks = () => {
     const Logo = () => {
     return (
         <div className="py-3 w-full flex flex-col items-center justify-center">
-        <img src="deadpool-icon.png" alt="Logo X-Force" className="h-16" />
+        <img src={logo} alt="Logo X-Force" className="h-16" />
         <span className="my-2 text-xl font-bold text-center">
             Gestión de Proyectos X-Force
         </span>
