@@ -9,12 +9,12 @@ const DropDown = ({ label, name, defaultValue = '', required, options }) => {
     setSelectedValue(defaultValue);
   }, [defaultValue]);
   return (
-    <label htmlFor={name} className='flex flex-col my-3'>
+    <label htmlFor={name} className="flex flex-col my-3">
       <span>{label}</span>
       <select
         required={required}
         name={name}
-        className='input'
+        className="input bg-gray-100"
         value={selectedValue}
         onChange={(e) => setSelectedValue(e.target.value)}
       >

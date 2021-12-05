@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Auth0Provider } from '@auth0/auth0-react';
 import { UserContext } from 'context/userContext';
 import Index from 'pages/Index';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
 
 import 'styles/globals.css';
 import "styles/tabla.css";
@@ -20,7 +20,7 @@ import Avances from 'pages/Avances';
 //   uri="" //uri del backend
 // })
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://servidor-gql-mintic-back.herokuapp.com/graphql",
   cache: new InMemoryCache(),
 });
 

@@ -8,7 +8,7 @@ const Input = ({ label, name, defaultValue, type, required }) => {
         required={required}
         type={type}
         name={name}
-        className="input"
+        className="input bg-gray-100"
         defaultValue={defaultValue}
       />
     </label>

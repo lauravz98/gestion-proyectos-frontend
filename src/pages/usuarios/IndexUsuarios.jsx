@@ -20,42 +20,44 @@ const IndexUsuarios = () => {
     if (loading) return <di>Cargando...</di>
     
     return (
-        <div>
-            Datos Usuarios:
-            <table className="tabla">
-            <thead>
-                <tr>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Identificación</th>
-                <th>Rol</th>
-                <th>Estado</th>
-                <th>Editar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data &&
-                data.Usuarios.map((u) => {
-                    return (
-                    <tr key={u._id}>
-                        <td>{u.nombre}</td>
-                        <td>{u.apellido}</td>
-                        <td>{u.correo}</td>
-                        <td>{u.identificacion}</td>
-                        <td>{u.rol}</td>
-                        <td>{u.estado}</td>
-                        <td>
-                        <Link to={`/gestion-usuarios/editar/${u._id}`}>
-                            <i className="fas fa-pen text-blue-600 hover:text-blue-400 cursor-pointer" />
-                        </Link>
-                        </td>
-                    </tr>
-                    );
-                })}
-            </tbody>
-            </table>
-        </div>
+      <div>
+        <h1 className="m-3 text-3xl text-gray-800 font-bold text-center">
+          Listado de usuarios:
+        </h1>
+        <table className="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Correo</th>
+              <th>Identificación</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data &&
+              data.Usuarios.map((u) => {
+                return (
+                  <tr key={u._id}>
+                    <td>{u.nombre}</td>
+                    <td>{u.apellido}</td>
+                    <td>{u.correo}</td>
+                    <td>{u.identificacion}</td>
+                    <td>{u.rol}</td>
+                    <td>{u.estado}</td>
+                    <td>
+                      <Link to={`/gestion-usuarios/editar/${u._id}`}>
+                        <i className="fas fa-pen text-blue-600 hover:text-blue-400 cursor-pointer" />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
     );
 }
 

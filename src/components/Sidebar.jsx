@@ -16,7 +16,7 @@ const SidebarLinks = () => {
     const Logo = () => {
     return (
         <div className="py-3 w-full flex flex-col items-center justify-center">
-        <img src="./deadpool-icon.png" alt="Logo X-Force" className="h-16" />
+        <img src="deadpool-icon.png" alt="Logo X-Force" className="h-16" />
         <span className="my-2 text-xl font-bold text-center">
             Gestión de Proyectos X-Force
         </span>
