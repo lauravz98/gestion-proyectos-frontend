@@ -20,7 +20,8 @@ import Avances from 'pages/Avances';
 //   uri="" //uri del backend
 // })
 const client = new ApolloClient({
-  uri: "https://servidor-gql-mintic-back.herokuapp.com/graphql",
+  //"https://servidor-gql-mintic-back.herokuapp.com/graphql"
+  uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
 });
 

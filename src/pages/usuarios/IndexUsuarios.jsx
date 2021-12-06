@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client'
 import { GET_USUARIOS } from 'graphql/usuarios/queries'
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
+import { Enum_Rol } from 'utils/enum';
+import { Enum_EstadoUsuario } from 'utils/enum';
 
 const IndexUsuarios = () => {
     const { data, error, loading } = useQuery(GET_USUARIOS)
@@ -45,8 +47,8 @@ const IndexUsuarios = () => {
                     <td>{u.apellido}</td>
                     <td>{u.correo}</td>
                     <td>{u.identificacion}</td>
-                    <td>{u.rol}</td>
-                    <td>{u.estado}</td>
+                    <td>{Enum_Rol[u.rol]}</td>
+                    <td>{Enum_EstadoUsuario[u.estado]}</td>
                     <td>
                       <Link to={`/gestion-usuarios/editar/${u._id}`}>
                         <i className="fas fa-pen text-blue-600 hover:text-blue-400 cursor-pointer" />
