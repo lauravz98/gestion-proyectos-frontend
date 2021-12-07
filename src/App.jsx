@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
 import Index from 'pages/Index';
 import { ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
-
 import 'styles/globals.css';
 import "styles/tabla.css";
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
@@ -13,6 +12,8 @@ import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import Proyectos from 'pages/Proyectos';
 import Inscripciones from 'pages/Inscripciones';
 import Avances from 'pages/Avances';
+import AuthLayout from 'layouts/AuthLayout';
+import Register from 'pages/auth/register';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -46,6 +47,9 @@ function App() {
               <Route path="gestion-proyectos" element={<Proyectos />} />
               <Route path="gestion-inscripciones" element={<Inscripciones />} />
               <Route path="gestion-avances" element={<Avances />} />
+            </Route>
+            <Route path='/auth' element={<AuthLayout />}>
+              <Route path='register' element={<Register />} />
             </Route>
           </Routes>
         </BrowserRouter>
