@@ -5,20 +5,24 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from '@apollo/client';
 import { useAuth } from 'context/authContext';
-import { VALIDATE_TOKEN } from 'graphql/auth/mutations';
+import { REFRESH_TOKEN } from 'graphql/auth/mutations';
 
 const PrivateLayout = () => {
     
     const { authToken, setToken, loadingAuth } = useAuth();
 
     const [
-        validateToken,
+        refreshToken,
         { data: dataMutation, loading: loadingMutation, error: errorMutation },
-    ] = useMutation(VALIDATE_TOKEN);
+    ] = useMutation(REFRESH_TOKEN);
 
     useEffect(() => {
-        validateToken();
+        refreshToken();
     }, []);
+
+    useEffect(() => {
+      console.log("data mutation: ", dataMutation)
+    }, [dataMutation]);
     
     return (
         <div className="flex flex-col md:flex-row flex-no-wrap h-screen">
