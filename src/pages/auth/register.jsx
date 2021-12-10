@@ -29,7 +29,7 @@ const Register = () => {
     console.log("data mutation", dataMutation);
     if (dataMutation) {
       if (dataMutation.registro.token) {
-        localStorage.setItem("token", dataMutation.registro.token);
+        setToken(dataMutation.registro.token);
         navigate("/");
       }
     }

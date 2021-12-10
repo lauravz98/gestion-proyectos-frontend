@@ -19,7 +19,7 @@ const IndexUsuarios = () => {
         }
     }, [error]);
 
-    if (loading) return <di>Cargando...</di>
+    if (loading) return <div>Cargando...</div>
     
     return (
       <div>

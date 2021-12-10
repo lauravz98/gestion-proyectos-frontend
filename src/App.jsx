@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Auth0Provider } from '@auth0/auth0-react';
 import { UserContext } from 'context/userContext';
 import Index from 'pages/Index';
-import { ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import {setContext} from '@apollo/client/link/context'
 import 'styles/globals.css';
 import "styles/tabla.css";
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
@@ -16,16 +17,29 @@ import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
 import Login from 'pages/auth/Login';
 import { AuthContext } from 'context/authContext';
-
 // import PrivateRoute from 'components/PrivateRoute';
+const httpLink = createHttpLink({
+  uri: "http://localhost:4000/graphql",
+});
 
-// const httpLink = createHttpLink({
-//   uri="" //uri del backend
-// })
+//se saco de la documentacion de apollo
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = JSON.parse(localStorage.getItem("token"));
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers, //concatenar autorization al header para ver el token desde el back
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+
 const client = new ApolloClient({
   //"https://servidor-gql-mintic-back.herokuapp.com/graphql"
-  uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
+  link: authLink.concat(httpLink),
 });
 
 function App() {
@@ -41,7 +55,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <AuthContext.Provider value={{ setToken }}>
+      <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
             <Routes>

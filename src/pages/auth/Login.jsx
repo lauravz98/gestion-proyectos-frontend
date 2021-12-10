@@ -30,8 +30,8 @@ const Login = () => {
         console.log("data mutation", dataMutation);
         if (dataMutation) {
             if (dataMutation.login.token) {
-            setToken(dataMutation.login.token);
-            navigate("/");
+                setToken(dataMutation.login.token);
+                navigate("/");
             }
         }
         }, [dataMutation, setToken, navigate]);
