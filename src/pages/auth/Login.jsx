@@ -7,6 +7,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN } from "graphql/auth/mutations";
 import { useAuth } from "context/authContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -26,15 +27,27 @@ const Login = () => {
         });
     };
 
-        useEffect(() => {
+    useEffect(() => {
         console.log("data mutation", dataMutation);
+        
         if (dataMutation) {
-            if (dataMutation.login.token) {
+            if (dataMutation.login) {
+                if (dataMutation.login.token) {
                 setToken(dataMutation.login.token);
                 navigate("/");
             }
+            } else {
+                console.log("error en el login")
         }
-        }, [dataMutation, setToken, navigate]);
+         
+    }
+    }, [dataMutation, setToken, navigate]);
+
+    useEffect(() => {
+      if (mutationError) {
+        toast.error("Error en la mutacion, login.jsx");
+      }
+    }, [ mutationError]);
 
     return (
         <div className="flex flex-col items-center justify-center w-full h-full p-10">

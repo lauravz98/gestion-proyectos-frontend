@@ -1,15 +1,19 @@
 import Sidebar from "components/Sidebar";
 import { Outlet } from "react-router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from '@apollo/client';
 import { useAuth } from 'context/authContext';
 import { REFRESH_TOKEN } from 'graphql/auth/mutations';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PrivateLayout = () => {
     
-    const { authToken, setToken, loadingAuth } = useAuth();
+    const navigate = useNavigate();
+    const { authToken, setToken } = useAuth();
+    const [loadingAuth, setLoadingAuth] = useState(true);
 
     const [
         refreshToken,
@@ -21,9 +25,20 @@ const PrivateLayout = () => {
     }, []);
 
     useEffect(() => {
-      console.log("data mutation: ", dataMutation)
-    }, [dataMutation]);
+        console.log("data mutation: ", dataMutation);
+        if (dataMutation) {
+            if (dataMutation.refreshToken.token) {
+                setToken(dataMutation.refreshToken.token);
+            } else {
+                setToken(null);
+                navigate("/auth/login");
+            }
+            setLoadingAuth(false);
+        }
+    }, [dataMutation, setToken, loadingAuth]);
     
+    if (loadingMutation || loadingAuth) return <div>Loading...</div>;
+   
     return (
         <div className="flex flex-col md:flex-row flex-no-wrap h-screen">
             <Sidebar />

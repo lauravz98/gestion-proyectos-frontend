@@ -9,6 +9,7 @@ import { REGISTRO } from 'graphql/auth/mutations';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'context/authContext';
+import { toast } from "react-toastify";
 
 const Register = () => {
 
@@ -34,6 +35,12 @@ const Register = () => {
       }
     }
   }, [dataMutation, setToken, navigate]);
+
+  useEffect(() => {
+    if (errorMutation ) {
+      toast.error("Error en la mutacion, register.jsx");
+    }
+  }, [errorMutation]);
 
   return (
     <div className='flex flex-col h-full w-full items-center justify-center'>
