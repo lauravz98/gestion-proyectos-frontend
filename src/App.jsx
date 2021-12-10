@@ -14,6 +14,7 @@ import Inscripciones from 'pages/Inscripciones';
 import Avances from 'pages/Avances';
 import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
+import Login from 'pages/auth/Login';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -43,13 +44,17 @@ function App() {
             <Route path="/" element={<PrivateLayout />}>
               <Route path="" element={<Index />} />
               <Route path="gestion-usuarios" element={<IndexUsuarios />} />
-              <Route path="gestion-usuarios/editar/:_id" element={<EditarUsuario />} />
+              <Route
+                path="gestion-usuarios/editar/:_id"
+                element={<EditarUsuario />}
+              />
               <Route path="gestion-proyectos" element={<Proyectos />} />
               <Route path="gestion-inscripciones" element={<Inscripciones />} />
               <Route path="gestion-avances" element={<Avances />} />
             </Route>
-            <Route path='/auth' element={<AuthLayout />}>
-              <Route path='register' element={<Register />} />
+            <Route path="/auth" element={<AuthLayout />}>
+              <Route path="register" element={<Register />} />
+              <Route path="login" element={<Login />} />
             </Route>
           </Routes>
         </BrowserRouter>
