@@ -38,7 +38,7 @@ const PrivateLayout = () => {
     }, [dataMutation, setToken, loadingAuth]);
     
     if (loadingMutation || loadingAuth) return <div>Loading...</div>;
-   
+    
     return (
         <div className="flex flex-col md:flex-row flex-no-wrap h-screen">
             <Sidebar />
