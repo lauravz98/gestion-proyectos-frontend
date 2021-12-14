@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Auth0Provider } from '@auth0/auth0-react';
@@ -17,7 +17,9 @@ import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
 import Login from 'pages/auth/Login';
 import { AuthContext } from 'context/authContext';
-// import PrivateRoute from 'components/PrivateRoute';
+import PrivateRoute from 'components/PrivateRoute';
+import jwt_decode from "jwt-decode";
+
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
 });
@@ -50,8 +52,26 @@ function App() {
     setAuthToken(token);
     if (token) {
       localStorage.setItem("token", JSON.stringify(token));
+    } else { //quitar el token para el logout
+      localStorage.removeItem("token")
     }
   };
+
+  useEffect(() => {
+    // console.log("token effect", authToken)
+    // console.log("token decode ", jwt_decode(authToken))
+    if (authToken) {
+      const decoded = jwt_decode(authToken);
+      setUserData({
+        _id: decoded._id,
+        nombre: decoded.nombre,
+        apellido: decoded.apellido,
+        identificacion: decoded.identificacion,
+        correo: decoded.correo,
+        rol: decoded.rol,
+      });
+    }
+  }, [authToken])
 
   return (
     <ApolloProvider client={client}>

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { Enum_Rol } from 'utils/enums';
 import { Enum_EstadoUsuario } from 'utils/enums';
+import PrivateRoute from 'components/PrivateRoute';
 
 const IndexUsuarios = () => {
     const { data, error, loading } = useQuery(GET_USUARIOS)
@@ -21,7 +22,8 @@ const IndexUsuarios = () => {
 
     if (loading) return <div>Cargando...</div>
     
-    return (
+  return (
+    <PrivateRoute roleList={ ["ADMINISTRADOR"]}>
       <div>
         <h1 className="m-3 text-3xl text-gray-800 font-bold text-center">
           Listado de usuarios:
@@ -39,8 +41,10 @@ const IndexUsuarios = () => {
             </tr>
           </thead>
           <tbody>
-            {data &&
-              data.Usuarios.map((u) => {
+            {
+              data && data.Usuarios ? (
+              <>
+              {data.Usuarios.map((u) => {
                 return (
                   <tr key={u._id}>
                     <td>{u.nombre}</td>
@@ -57,9 +61,14 @@ const IndexUsuarios = () => {
                   </tr>
                 );
               })}
+              </>
+            ) : (
+              <div>No autorizado</div>
+            )}
           </tbody>
         </table>
       </div>
+    </PrivateRoute>
     );
 }
 

@@ -22,7 +22,7 @@ const EditarUsuario = () => {
     variables: { id },
   });
 
-  console.log("querydata",queryData)
+  //console.log("querydata",queryData)
 
   const [
     editarUsuario,

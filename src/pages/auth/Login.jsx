@@ -21,15 +21,13 @@ const Login = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-
         login({
         variables: formData,
         });
     };
 
     useEffect(() => {
-        console.log("data mutation", dataMutation);
-        
+        // console.log("data mutation", dataMutation);        
         if (dataMutation) {
             if (dataMutation.login) {
                 if (dataMutation.login.token) {
@@ -38,15 +36,14 @@ const Login = () => {
             }
             } else {
                 console.log("error en el login")
+            }         
         }
-         
-    }
     }, [dataMutation, setToken, navigate]);
 
     useEffect(() => {
-      if (mutationError) {
-        toast.error("Error en la mutacion, login.jsx");
-      }
+        if (mutationError) {
+            toast.error("Error en la mutacion, login.jsx");
+        }
     }, [ mutationError]);
 
     return (

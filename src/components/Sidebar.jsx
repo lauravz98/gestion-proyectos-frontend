@@ -1,17 +1,56 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./deadpool-icon.png";
+import { useAuth } from "context/authContext";
+import PrivateComponent from "./PrivateComponent.jsx";
 
 const SidebarLinks = () => {
     return (
-        <ul className="mt-12">
-            <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
-            <SidebarRoute to="/gestion-usuarios" title="Gestión de usuarios" icon="fas fa-users" />
-            <SidebarRoute to="/gestion-proyectos" title="Gestión de proyectos" icon="fas fa-project-diagram" />
-            <SidebarRoute to="/gestion-inscripciones" title="Gestión de inscripciones" icon="fas fa-tasks" />
-            <SidebarRoute to="/gestion-avances" title="Gestión de avances" icon="fas fa-spinner"  />
-        </ul>
+      <ul className="mt-12">
+        <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
+        <PrivateComponent roleList={["ADMINISTRADOR"]}>
+          <SidebarRoute
+            to="/gestion-usuarios"
+            title="Gestión de usuarios"
+            icon="fas fa-users"
+          />
+        </PrivateComponent>
+        <SidebarRoute
+          to="/gestion-proyectos"
+          title="Gestión de proyectos"
+          icon="fas fa-project-diagram"
+        />
+        <SidebarRoute
+          to="/gestion-inscripciones"
+          title="Gestión de inscripciones"
+          icon="fas fa-tasks"
+        />
+        <SidebarRoute
+          to="/gestion-avances"
+          title="Gestión de avances"
+          icon="fas fa-spinner"
+        />
+        <Logout />
+      </ul>
     );
+    };
+
+    const Logout = () => {
+        const { setToken } = useAuth();
+        const deleteToken = () => {
+        //console.log("eliminar token");
+        setToken(null);
+        };
+        return (
+        <li onClick={() => deleteToken()}>
+            <NavLink to="/auth/login" className="sidebar-route text-red-700">
+            <div className="flex items-center">
+                <i className="fas fa-sign-out-alt" />
+                <span className="text-sm  ml-2">Cerrar Sesión</span>
+            </div>
+            </NavLink>
+        </li>
+        );
     };
 
     const Logo = () => {

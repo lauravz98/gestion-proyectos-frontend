@@ -22,10 +22,14 @@ const PrivateLayout = () => {
 
     useEffect(() => {
         refreshToken();
-    }, []);
+    }, [refreshToken]);
 
     useEffect(() => {
-        console.log("data mutation: ", dataMutation);
+        console.log("Token Actual", authToken, loadingMutation, loadingAuth)
+    }, [authToken])
+
+    useEffect(() => {
+        //console.log("data mutation: ", dataMutation);
         if (dataMutation) {
             if (dataMutation.refreshToken.token) {
                 setToken(dataMutation.refreshToken.token);
@@ -35,7 +39,7 @@ const PrivateLayout = () => {
             }
             setLoadingAuth(false);
         }
-    }, [dataMutation, setToken, loadingAuth]);
+    }, [dataMutation, setToken, loadingAuth, navigate]);
     
     if (loadingMutation || loadingAuth) return <div>Loading...</div>;
     

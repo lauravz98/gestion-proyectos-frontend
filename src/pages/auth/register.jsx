@@ -27,7 +27,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    console.log("data mutation", dataMutation);
+    // console.log("data mutation", dataMutation);
     if (dataMutation) {
       if (dataMutation.registro.token) {
         setToken(dataMutation.registro.token);
