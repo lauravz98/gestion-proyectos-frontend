@@ -88,7 +88,7 @@ function App() {
                   element={<EditarUsuario />}
                 />
                 <Route path="gestion-proyectos" element={<IndexProyectos />} />
-                <Route path="/proyectos/nuevo" element={<NuevoProyecto />} />
+                <Route path="gestion-proyectos/nuevo" element={<NuevoProyecto />} />
                 <Route
                   path="gestion-inscripciones"
                   element={<Inscripciones />}

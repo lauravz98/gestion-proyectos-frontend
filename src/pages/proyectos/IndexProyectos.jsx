@@ -52,7 +52,7 @@ const IndexProyectos = () => {
         <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
           <div className="my-2 self-end">
             <button className="bg-blue-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-blue-400">
-              <Link to="/proyectos/nuevo">Crear nuevo proyecto</Link>
+              <Link to="/geestion-proyectos/nuevo">Crear nuevo proyecto</Link>
             </button>
           </div>
         </PrivateComponent>

@@ -58,7 +58,7 @@ const NuevoProyecto = () => {
   return (
     <div className="p-10 flex flex-col items-center">
       <div className="self-start">
-        <Link to="/proyectos">
+        <Link to="/gestion-proyectos">
           <i className="fas fa-arrow-left" />
         </Link>
       </div>
