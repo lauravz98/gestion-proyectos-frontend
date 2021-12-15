@@ -2,8 +2,8 @@ import { gql } from '@apollo/client'
 
 //consulta que retorna todo el listado de usuarios
 const GET_USUARIOS = gql`
-    query Usuarios{
-        Usuarios {
+    query Query($filtro: FiltroUsuarios) {
+    Usuarios(filtro: $filtro) {
         _id
         nombre
         apellido

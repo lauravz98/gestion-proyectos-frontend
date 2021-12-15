@@ -19,6 +19,7 @@ import Login from 'pages/auth/Login';
 import { AuthContext } from 'context/authContext';
 import PrivateRoute from 'components/PrivateRoute';
 import jwt_decode from "jwt-decode";
+import NuevoProyecto from "pages/proyectos/NuevoProyecto";
 
 const httpLink = createHttpLink({
   uri: "https://servidor-gql-mintic-back.herokuapp.com/graphql",
@@ -87,6 +88,7 @@ function App() {
                   element={<EditarUsuario />}
                 />
                 <Route path="gestion-proyectos" element={<IndexProyectos />} />
+                <Route path="/proyectos/nuevo" element={<NuevoProyecto />} />
                 <Route
                   path="gestion-inscripciones"
                   element={<Inscripciones />}
