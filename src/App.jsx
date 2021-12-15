@@ -10,7 +10,7 @@ import 'styles/globals.css';
 import "styles/tabla.css";
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditarUsuario from 'pages/usuarios/EditarUsuario';
-import Proyectos from 'pages/Proyectos';
+import IndexProyectos from 'pages/proyectos/IndexProyectos';
 import Inscripciones from 'pages/Inscripciones';
 import Avances from 'pages/Avances';
 import AuthLayout from 'layouts/AuthLayout';
@@ -86,7 +86,7 @@ function App() {
                   path="gestion-usuarios/editar/:_id"
                   element={<EditarUsuario />}
                 />
-                <Route path="gestion-proyectos" element={<Proyectos />} />
+                <Route path="gestion-proyectos" element={<IndexProyectos />} />
                 <Route
                   path="gestion-inscripciones"
                   element={<Inscripciones />}
