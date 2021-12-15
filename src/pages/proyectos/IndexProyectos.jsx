@@ -15,18 +15,18 @@ import PrivateComponent from "components/PrivateComponent";
 
 const AccordionStyled = styled((props) => <Accordion {...props} />)(
   ({ theme }) => ({
-    backgroundColor: "#919191",
+    backgroundColor: "#f2f2f2",
   })
 );
 const AccordionSummaryStyled = styled((props) => (
   <AccordionSummary {...props} />
 ))(({ theme }) => ({
-  backgroundColor: "#919191",
+  backgroundColor: "#004466",
 }));
 const AccordionDetailsStyled = styled((props) => (
   <AccordionDetails {...props} />
 ))(({ theme }) => ({
-  backgroundColor: "#ccc",
+  backgroundColor: "#f2f2f2",
 }));
 
 const IndexProyectos = () => {
@@ -41,6 +41,9 @@ const IndexProyectos = () => {
   if (queryData.Proyectos) {
     return (
       <div className="p-10">
+        <h1 className="m-3 text-3xl text-gray-800 font-bold">
+          Gestión de proyectos
+        </h1>
         {queryData.Proyectos.map((proyecto) => {
           return <AccordionProyecto proyecto={proyecto} />;
         })}
@@ -54,27 +57,32 @@ const IndexProyectos = () => {
 const AccordionProyecto = ({ proyecto }) => {
   const [showDialog, setShowDialog] = useState(false);
   return (
-    <>
+    <>      
       <AccordionStyled>
         <AccordionSummaryStyled
-          expandIcon={<i className="fas fa-chevron-down" />}
+          expandIcon={<i className="fas fa-chevron-down text-gray-100" />}
         >
           <div className="flex w-full justify-between">
-            <div className="uppercase font-bold text-gray-100 ">
-              {proyecto.nombre} - {proyecto.estado}
+            <div className="capitalize font-bold text-gray-100 ">
+              {proyecto.nombre} - Estado actual: {proyecto.estado}
             </div>
           </div>
         </AccordionSummaryStyled>
         <AccordionDetailsStyled>
           <PrivateComponent roleList={["ADMINISTRADOR"]}>
-            <i
-              className="mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400"
+            <div
+              className="m-2 flex float-right text-gray-350 hover:text-gray-200 cursor-pointer"
               onClick={() => {
                 setShowDialog(true);
               }}
-            />
+            >
+              <span className="text-sm"> Editar proyecto </span>
+              <i className="ml-3 flex fas fa-pen " />
+            </div>
           </PrivateComponent>
-          <div>Liderado Por: {proyecto.lider.correo}</div>
+          <div>
+            Liderado por: {proyecto.lider.correo}
+          </div>
           <div className="flex">
             {proyecto.objetivos.map((objetivo) => {
               return (
@@ -141,10 +149,15 @@ const FormEditProyecto = ({ _id }) => {
 const Objetivo = ({ tipo, descripcion }) => {
   return (
     <div className="mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col items-center justify-center shadow-xl">
-      <div className="text-lg font-bold">{tipo}</div>
-      <div>{descripcion}</div>
+      <div className="uppercase font-light text-sm">
+        Tipo de objetivo: {tipo}
+      </div>
+      <div className="uppercase text-lg">{descripcion}</div>
       <PrivateComponent roleList={["ADMINISTRADOR"]}>
-        <div>Editar</div>
+        <div className="flex text-sm text-gray-200">
+          Editar objetivo
+          <i className="ml-2 flex fas fa-pen " />
+        </div>
       </PrivateComponent>
     </div>
   );
