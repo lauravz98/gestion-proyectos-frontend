@@ -21,7 +21,7 @@ import PrivateRoute from 'components/PrivateRoute';
 import jwt_decode from "jwt-decode";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://servidor-gql-mintic-back.herokuapp.com/graphql",
 });
 
 //se saco de la documentacion de apollo
