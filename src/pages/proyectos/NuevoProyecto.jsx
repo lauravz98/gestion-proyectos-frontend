@@ -11,8 +11,11 @@ import { nanoid } from "nanoid";
 import { ObjContext } from "context/objContext";
 import { useObj } from "context/objContext";
 import { CREAR_PROYECTO } from "graphql/proyectos/mutations";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const NuevoProyecto = () => {
+    const navigate = useNavigate();
   const { form, formData, updateFormData } = useFormData();
   const [listaUsuarios, setListaUsuarios] = useState({});
   const { data, loading, error } = useQuery(GET_USUARIOS, {
@@ -38,9 +41,13 @@ const NuevoProyecto = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    console.log("data mutation", mutationData);
-  });
+//esto aun no funciona    
+    useEffect(() => {
+      if (mutationData) {
+        navigate("/gestion-proyectos");
+        toast.success("Proyecto creado correctamente");
+      }
+    }, [mutationData, navigate]);
 
   const submitForm = (e) => {
     e.preventDefault();
