@@ -17,7 +17,7 @@ import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
 import Login from 'pages/auth/Login';
 import { AuthContext } from 'context/authContext';
-import PrivateRoute from 'components/PrivateRoute';
+// import PrivateRoute from 'components/PrivateRoute';
 import jwt_decode from "jwt-decode";
 import NuevoProyecto from "pages/proyectos/NuevoProyecto";
 

@@ -13,6 +13,7 @@ import { EDITAR_PROYECTO } from "graphql/proyectos/mutations";
 import useFormData from "hooks/useFormData";
 import PrivateComponent from "components/PrivateComponent";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AccordionStyled = styled((props) => <Accordion {...props} />)(
   ({ theme }) => ({
@@ -38,7 +39,8 @@ const IndexProyectos = () => {
   }, [queryData]);
 
   if (loading) return <div>Cargando...</div>;
-
+  if (error) return <div> {toast.error("Error cargando proyectos")} </div>;
+  
   if (queryData.Proyectos) {
     return (
       <div className="p-10 flex flex-col">
@@ -124,6 +126,8 @@ const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
   const [editarProyecto, { data: dataMutation, loading, error }] =
     useMutation(EDITAR_PROYECTO);
+
+  if (error) {toast.error("Error editando proyecto")}
 
   const submitForm = (e) => {
     e.preventDefault();

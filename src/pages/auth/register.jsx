@@ -36,11 +36,8 @@ const Register = () => {
     }
   }, [dataMutation, setToken, navigate]);
 
-  useEffect(() => {
-    if (errorMutation ) {
-      toast.error("Error en la mutacion, register.jsx");
-    }
-  }, [errorMutation]);
+  if (errorMutation ) return<div>{toast.error("Error en la mutacion, register.jsx")}</div>
+  if (loadingMutation ) return <div>Loading...</div>;
 
   return (
     <div className='flex flex-col h-full w-full items-center justify-center'>

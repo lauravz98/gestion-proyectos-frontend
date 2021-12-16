@@ -42,7 +42,8 @@ const PrivateLayout = () => {
     }, [dataMutation, setToken, loadingAuth, navigate]);
     
     if (loadingMutation || loadingAuth) return <div>Loading...</div>;
-    
+    if (errorMutation) return <div> {toast.error("Error cargando el token")} </div>;
+
     return (
         <div className="flex flex-col md:flex-row flex-no-wrap h-screen">
             <Sidebar />

@@ -60,7 +60,8 @@ const NuevoProyecto = () => {
     });
   };
 
-  if (loading) return <div>...Loading</div>;
+  if (loading || mutationLoading) return <div>...Loading</div>;
+  if (error || mutationError) return (<div>  {toast.error("Error creando el proyecto ")} </div>);
 
   return (
     <div className="p-10 flex flex-col items-center">
