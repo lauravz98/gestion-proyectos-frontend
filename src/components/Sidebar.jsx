@@ -20,16 +20,19 @@ const SidebarLinks = () => {
           title="Gestión de proyectos"
           icon="fas fa-project-diagram"
         />
-        <SidebarRoute
+        <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+          <SidebarRoute
           to="/gestion-inscripciones"
           title="Gestión de inscripciones"
           icon="fas fa-tasks"
         />
-        <SidebarRoute
+        </PrivateComponent>
+        
+        {/* <SidebarRoute
           to="/gestion-avances"
           title="Gestión de avances"
           icon="fas fa-spinner"
-        />
+        /> */}
         <Logout />
       </ul>
     );

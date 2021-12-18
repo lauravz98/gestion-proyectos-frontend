@@ -11,7 +11,7 @@ import "styles/tabla.css";
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import IndexProyectos from 'pages/proyectos/IndexProyectos';
-import Inscripciones from 'pages/Inscripciones';
+import IndexInscripciones from 'pages/inscripciones/IndexInscripciones';
 import Avances from 'pages/Avances';
 import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
@@ -91,7 +91,7 @@ function App() {
                 <Route path="gestion-proyectos/nuevo" element={<NuevoProyecto />} />
                 <Route
                   path="gestion-inscripciones"
-                  element={<Inscripciones />}
+                  element={<IndexInscripciones />}
                 />
                 <Route path="gestion-avances" element={<Avances />} />
               </Route>
